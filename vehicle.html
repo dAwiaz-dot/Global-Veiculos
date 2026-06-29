@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Detalhes do veículo disponível na Global Veículos em Alfenas-MG." />
+    <title>Veículo | Global Veículos</title>
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="vehicle-page">
+    <header class="site-header is-scrolled">
+      <a class="logo" href="index.html" aria-label="Voltar para a página inicial">
+        <span class="logo-mark logo-image">
+          <img src="assets/global-veiculos-logo.jpg" alt="" />
+        </span>
+        <span>
+          <strong>Global Veículos</strong>
+          <small>Detalhes do veículo</small>
+        </span>
+      </a>
+      <a class="header-cta" href="veiculos.html">
+        <i data-lucide="arrow-left"></i>
+        <span>Voltar ao estoque</span>
+      </a>
+      <button class="theme-toggle" type="button" aria-label="Alternar modo escuro" data-theme-toggle>
+        <i data-lucide="moon"></i>
+      </button>
+    </header>
+
+    <main class="vehicle-detail-page">
+      <section class="section">
+        <div class="section-inner" data-vehicle-page-content>
+          <p class="empty-state">Carregando veículo...</p>
+        </div>
+      </section>
+    </main>
+
+    <a class="floating-whatsapp" href="#" aria-label="Falar no WhatsApp" data-whatsapp>
+      <i data-lucide="message-circle"></i>
+    </a>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="vehicle.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

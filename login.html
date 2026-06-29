@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Login do painel administrativo da Global Veículos." />
+    <title>Login ADM | Global Veículos</title>
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <section class="login-screen">
+      <form class="login-card" data-login-form>
+        <img src="assets/global-veiculos-logo.jpg" alt="" />
+        <p class="eyebrow">Acesso restrito</p>
+        <h1>Entrar no ADM</h1>
+        <label class="field">
+          <span>Usuário</span>
+          <input type="text" name="username" autocomplete="username" value="pedro" required />
+        </label>
+        <label class="field">
+          <span>Senha</span>
+          <input type="password" name="password" autocomplete="current-password" required />
+        </label>
+        <p class="login-error" data-login-error hidden></p>
+        <button class="btn btn-primary" type="submit">
+          <i data-lucide="lock-keyhole"></i>
+          Entrar
+        </button>
+      </form>
+    </section>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="login.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

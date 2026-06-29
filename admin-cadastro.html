@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Cadastro de veículos da Global Veículos." />
+    <title>ADM Cadastro | Global Veículos</title>
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body data-admin-page="cadastro">
+    <header class="admin-header">
+      <a class="brand" href="admin.html">
+        <span><img src="assets/global-veiculos-logo.jpg" alt="" /></span>
+        <strong>Global Veículos</strong>
+      </a>
+      <nav>
+        <a href="veiculos.html">Ver site</a>
+        <a href="admin.html">Estoque</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Alternar modo escuro" data-theme-toggle>
+        <i data-lucide="moon"></i>
+      </button>
+      <button class="theme-toggle" type="button" aria-label="Sair do ADM" data-logout>
+        <i data-lucide="log-out"></i>
+      </button>
+    </header>
+
+    <main class="admin-shell">
+      <div class="admin-layout">
+        <aside class="admin-sidebar" aria-label="Navegação do painel">
+          <div class="sidebar-card identity-card">
+            <img src="assets/global-veiculos-logo.jpg" alt="" />
+            <div>
+              <p class="eyebrow">ADM Global</p>
+              <strong>Cadastro</strong>
+              <span>Dados principais, opcionais e fotos.</span>
+            </div>
+          </div>
+          <nav class="sidebar-nav" aria-label="Páginas do ADM">
+            <a href="admin.html"><i data-lucide="layout-dashboard"></i> Estoque</a>
+            <a href="admin-cadastro.html"><i data-lucide="car-front"></i> Cadastro</a>
+            <a href="admin-financeiro.html"><i data-lucide="calculator"></i> Financeiro</a>
+            <a href="admin-meta.html"><i data-lucide="megaphone"></i> Meta Ads</a>
+            <a href="admin-publicacao.html"><i data-lucide="send"></i> Publicação</a>
+          </nav>
+        </aside>
+
+        <div class="admin-workspace">
+          <section class="admin-hero">
+            <div>
+              <p class="eyebrow">Cadastro</p>
+              <h1>Dados do veículo</h1>
+              <p>Cadastre nome, preço, km, opcionais, status e fotos reais do carro.</p>
+            </div>
+            <div class="admin-actions">
+              <button class="btn btn-light" type="button" data-new-vehicle>
+                <i data-lucide="plus"></i>
+                Novo veículo
+              </button>
+              <a class="btn btn-primary" href="admin.html">
+                <i data-lucide="list"></i>
+                Ver estoque
+              </a>
+            </div>
+          </section>
+
+          <section class="admin-grid">
+            <form class="vehicle-form" data-vehicle-form>
+              <input type="hidden" name="id" />
+
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Veículo</p>
+                  <h2 data-form-title>Adicionar veículo</h2>
+                </div>
+                <button class="icon-button" type="button" aria-label="Limpar formulário" data-reset-form>
+                  <i data-lucide="rotate-ccw"></i>
+                </button>
+              </div>
+
+              <div class="form-grid">
+                <label class="field field-wide">
+                  <span>Nome do veículo</span>
+                  <input type="text" name="name" placeholder="Ex: Toyota Corolla XEi 2.0" required />
+                </label>
+                <label class="field">
+                  <span>Marca</span>
+                  <input type="text" name="brand" placeholder="Toyota" required />
+                </label>
+                <label class="field">
+                  <span>Ano/modelo</span>
+                  <input type="text" name="year" placeholder="2019/2020" required />
+                </label>
+                <label class="field">
+                  <span>Ano para filtro</span>
+                  <input type="number" name="yearNumber" placeholder="2020" min="1950" max="2035" required />
+                </label>
+                <label class="field">
+                  <span>Preço</span>
+                  <div class="input-affix">
+                    <span>R$</span>
+                    <input type="number" name="price" placeholder="72900" min="0" required />
+                  </div>
+                  <small class="field-hint" data-price-readout>R$ 0</small>
+                </label>
+                <label class="field">
+                  <span>Quilometragem</span>
+                  <div class="input-affix">
+                    <input type="text" name="mileage" placeholder="68.000" inputmode="numeric" required />
+                    <span>km</span>
+                  </div>
+                  <small class="field-hint" data-mileage-readout>0 km</small>
+                </label>
+                <label class="field">
+                  <span>Câmbio</span>
+                  <select name="transmission" required>
+                    <option value="Manual">Manual</option>
+                    <option value="Automático">Automático</option>
+                    <option value="CVT">CVT</option>
+                    <option value="Automatizado">Automatizado</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Combustível</span>
+                  <select name="fuel" required>
+                    <option value="Flex">Flex</option>
+                    <option value="Gasolina">Gasolina</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Híbrido">Híbrido</option>
+                    <option value="Elétrico">Elétrico</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Cor</span>
+                  <input type="text" name="color" placeholder="Prata" required />
+                </label>
+                <label class="field">
+                  <span>Selo do card</span>
+                  <input type="text" name="badge" placeholder="Revisado" />
+                </label>
+                <label class="field">
+                  <span>Status</span>
+                  <select name="status">
+                    <option value="Disponível">Disponível</option>
+                    <option value="Recém-chegado">Recém-chegado</option>
+                    <option value="Oferta">Oferta</option>
+                    <option value="Reservado">Reservado</option>
+                    <option value="Vendido">Vendido</option>
+                  </select>
+                </label>
+                <div class="field check-field">
+                  <span>Destaque</span>
+                  <label>
+                    <input type="checkbox" name="featured" />
+                    Mostrar como destaque
+                  </label>
+                </div>
+                <label class="field field-wide">
+                  <span>Opcionais</span>
+                  <input type="text" name="options" placeholder="Ar-condicionado, Direção elétrica, Multimídia" />
+                  <div class="option-chips" data-option-chips aria-label="Opcionais rápidos">
+                    <button type="button" data-option-value="Ar-condicionado">Ar-condicionado</button>
+                    <button type="button" data-option-value="Direção elétrica">Direção elétrica</button>
+                    <button type="button" data-option-value="Vidros elétricos">Vidros elétricos</button>
+                    <button type="button" data-option-value="Travas elétricas">Travas elétricas</button>
+                    <button type="button" data-option-value="Central multimídia">Central multimídia</button>
+                    <button type="button" data-option-value="Câmera de ré">Câmera de ré</button>
+                    <button type="button" data-option-value="Sensor de estacionamento">Sensor de estacionamento</button>
+                    <button type="button" data-option-value="Bancos em couro">Bancos em couro</button>
+                    <button type="button" data-option-value="Airbag duplo">Airbag duplo</button>
+                    <button type="button" data-option-value="Freios ABS">Freios ABS</button>
+                    <button type="button" data-option-value="Rodas de liga">Rodas de liga</button>
+                    <button type="button" data-option-value="Controle de estabilidade">Controle de estabilidade</button>
+                  </div>
+                </label>
+                <label class="field field-wide">
+                  <span>Descrição</span>
+                  <textarea name="description" rows="4" placeholder="Descreva o estado, procedência e diferenciais do veículo."></textarea>
+                </label>
+              </div>
+
+              <div class="photo-panel">
+                <div class="panel-heading compact">
+                  <div>
+                    <p class="eyebrow">Fotos reais</p>
+                    <h3>Galeria do veículo</h3>
+                  </div>
+                </div>
+                <p class="helper">Envie fotos reais do carro. Elas serão salvas junto com o cadastro.</p>
+                <label class="upload-box">
+                  <i data-lucide="image-plus"></i>
+                  <span>Enviar fotos do computador/celular</span>
+                  <input type="file" accept="image/*" multiple data-photo-files />
+                </label>
+                <div class="url-row">
+                  <input type="url" placeholder="Ou cole uma URL pública da imagem" data-photo-url />
+                  <button class="btn btn-light" type="button" data-add-photo-url>Adicionar URL</button>
+                </div>
+                <div class="photo-preview" data-photo-preview></div>
+              </div>
+
+              <aside class="ad-preview" aria-label="Preview do anúncio" data-ad-preview></aside>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">
+                  <i data-lucide="save"></i>
+                  Salvar cadastro
+                </button>
+                <a class="btn btn-light" href="admin-financeiro.html">
+                  <i data-lucide="calculator"></i>
+                  Ir para financeiro
+                </a>
+                <button class="btn btn-danger" type="button" data-delete-current hidden>
+                  <i data-lucide="trash-2"></i>
+                  Excluir veículo
+                </button>
+              </div>
+            </form>
+
+            <aside class="stock-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Seleção</p>
+                  <h2>Editar existente</h2>
+                </div>
+              </div>
+              <div class="stock-list" data-stock-list></div>
+            </aside>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <template data-empty-template>
+      <div class="empty-panel">
+        <i data-lucide="car-front"></i>
+        <h3>Nenhum veículo cadastrado</h3>
+        <p>Preencha o formulário para salvar o primeiro veículo.</p>
+      </div>
+    </template>
+
+    <div class="toast" role="status" data-toast hidden></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="admin.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "name": "Global Veículos Alfenas",
+  "short_name": "Global Veículos",
+  "description": "Site da Global Veículos em Alfenas-MG para consultar seminovos, troca, financiamento e contato pelo WhatsApp.",
+  "lang": "pt-BR",
+  "start_url": "/index.html?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1b34",
+  "theme_color": "#0b1b34",
+  "categories": ["business", "shopping", "auto"],
+  "icons": [
+    {
+      "src": "/assets/pwa-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver veículos",
+      "short_name": "Veículos",
+      "description": "Abrir o estoque da Global Veículos.",
+      "url": "/veiculos.html",
+      "icons": [{ "src": "/assets/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Falar no WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Abrir a página de contato.",
+      "url": "/contato.html",
+      "icons": [{ "src": "/assets/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

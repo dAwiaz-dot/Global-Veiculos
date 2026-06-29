@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Contato da Global Veículos em Alfenas-MG." />
+    <title>Contato | Global Veículos</title>
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header is-scrolled" data-header>
+      <a class="logo" href="index.html" aria-label="Global Veículos - Início">
+        <span class="logo-mark logo-image">
+          <img src="assets/global-veiculos-logo.jpg" alt="" />
+        </span>
+        <span>
+          <strong>Global Veículos</strong>
+          <small>Contato</small>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
+        <i data-lucide="menu"></i>
+      </button>
+      <nav class="main-nav" data-nav>
+        <a href="index.html">Início</a>
+        <a href="veiculos.html">Veículos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="troca.html">Troca</a>
+        <a href="financiamento.html">Financiamento</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Alternar modo escuro" data-theme-toggle>
+        <i data-lucide="moon"></i>
+      </button>
+      <a class="header-cta" href="#" data-whatsapp>
+        <i data-lucide="message-circle"></i>
+        <span>Falar no WhatsApp</span>
+      </a>
+    </header>
+
+    <main class="inner-page-main">
+      <section class="page-hero">
+        <div class="section-inner page-hero-content reveal">
+          <p class="eyebrow">Contato</p>
+          <h1>Fale com a Global Veículos</h1>
+          <p>Atendimento pelo WhatsApp, Instagram ou presencialmente em Alfenas-MG.</p>
+        </div>
+      </section>
+
+      <section class="contact section-band">
+        <div class="section-inner contact-layout">
+          <div class="contact-info reveal">
+            <p class="eyebrow">Dados da loja</p>
+            <h2>Atendimento direto</h2>
+            <div class="contact-list">
+              <p><i data-lucide="map-pin"></i> Global Veículos, Alfenas - MG</p>
+              <p><i data-lucide="phone"></i> (35) 99974-0120</p>
+              <p><i data-lucide="message-circle"></i> WhatsApp: (35) 99974-0120</p>
+              <p><i data-lucide="clock"></i> Segunda a sexta, 8h às 18h. Sábado, 8h às 12h.</p>
+            </div>
+            <div class="map-frame" aria-label="Mapa com localização da Global Veículos em Alfenas">
+              <iframe
+                title="Mapa - Global Veículos em Alfenas"
+                src="https://www.google.com/maps?q=-21.4255114,-45.9595197&z=16&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <a class="btn btn-outline" href="https://maps.app.goo.gl/cCri2sJo7Tm5dQ8s5" target="_blank" rel="noreferrer">
+              <i data-lucide="map-pin"></i>
+              <span>Abrir rota no Google Maps</span>
+            </a>
+          </div>
+
+          <form class="contact-form reveal" data-contact-form>
+            <h3>Enviar mensagem</h3>
+            <label class="field">
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Seu nome" required />
+            </label>
+            <label class="field">
+              <span>Telefone</span>
+              <input type="tel" name="phone" placeholder="(35) 99974-0120" required />
+            </label>
+            <label class="field">
+              <span>Veículo de interesse</span>
+              <input type="text" name="vehicle" placeholder="Ex: Corolla XEi" />
+            </label>
+            <label class="field">
+              <span>Mensagem</span>
+              <textarea name="message" rows="5" placeholder="Conte como podemos ajudar"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">
+              <i data-lucide="send"></i>
+              <span>Enviar pelo WhatsApp</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-inner footer-layout">
+        <a class="logo footer-logo" href="index.html">
+          <span class="logo-mark logo-image">
+            <img src="assets/global-veiculos-logo.jpg" alt="" />
+          </span>
+          <span>
+            <strong>Global Veículos</strong>
+            <small>Seminovos em Alfenas</small>
+          </span>
+        </a>
+        <nav class="footer-links" aria-label="Links rápidos">
+          <a href="index.html">Início</a>
+          <a href="veiculos.html">Veículos</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="troca.html">Troca</a>
+          <a href="financiamento.html">Financiamento</a>
+          <a href="contato.html">Contato</a>
+          <a href="privacidade.html">Privacidade</a>
+        </nav>
+        <div class="footer-social">
+          <a href="#" data-whatsapp>WhatsApp</a>
+          <a href="https://www.instagram.com/_globalveiculosalfenas/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="admin.html">Área ADM</a>
+        </div>
+      </div>
+      <p class="copyright">© <span data-year></span> Global Veículos. Todos os direitos reservados.</p>
+    </footer>
+
+    <a class="floating-whatsapp" href="#" aria-label="Falar no WhatsApp" data-whatsapp>
+      <i data-lucide="message-circle"></i>
+    </a>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

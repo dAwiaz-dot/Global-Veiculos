@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Painel administrativo do estoque da Global Veículos." />
+    <title>ADM Estoque | Global Veículos</title>
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body data-admin-page="estoque">
+    <header class="admin-header">
+      <a class="brand" href="admin.html">
+        <span><img src="assets/global-veiculos-logo.jpg" alt="" /></span>
+        <strong>Global Veículos</strong>
+      </a>
+      <nav>
+        <a href="veiculos.html">Ver site</a>
+        <a href="https://www.instagram.com/_globalveiculosalfenas/" target="_blank" rel="noreferrer">Instagram</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Alternar modo escuro" data-theme-toggle>
+        <i data-lucide="moon"></i>
+      </button>
+      <button class="theme-toggle" type="button" aria-label="Sair do ADM" data-logout>
+        <i data-lucide="log-out"></i>
+      </button>
+    </header>
+
+    <main class="admin-shell">
+      <div class="admin-layout">
+        <aside class="admin-sidebar" aria-label="Navegação do painel">
+          <div class="sidebar-card identity-card">
+            <img src="assets/global-veiculos-logo.jpg" alt="" />
+            <div>
+              <p class="eyebrow">ADM Global</p>
+              <strong>Gestão de estoque</strong>
+              <span>Loja de seminovos em Alfenas-MG</span>
+            </div>
+          </div>
+
+          <nav class="sidebar-nav" aria-label="Páginas do ADM">
+            <a href="admin.html"><i data-lucide="layout-dashboard"></i> Estoque</a>
+            <a href="admin-cadastro.html"><i data-lucide="car-front"></i> Cadastro</a>
+            <a href="admin-financeiro.html"><i data-lucide="calculator"></i> Financeiro</a>
+            <a href="admin-meta.html"><i data-lucide="megaphone"></i> Meta Ads</a>
+            <a href="admin-publicacao.html"><i data-lucide="send"></i> Publicação</a>
+          </nav>
+
+          <div class="sidebar-card sync-card">
+            <span class="status-dot"></span>
+            <div>
+              <strong>Servidor ativo</strong>
+              <p>Estoque salvo em arquivo e protegido por login.</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="admin-workspace">
+          <section class="admin-hero" id="estoque">
+            <div>
+              <p class="eyebrow">Painel administrativo</p>
+              <h1>Estoque</h1>
+              <p>Resumo dos veículos salvos, status de venda e atalhos para editar cada parte do cadastro.</p>
+            </div>
+            <div class="admin-actions">
+              <a class="btn btn-light" href="admin-cadastro.html">
+                <i data-lucide="plus"></i>
+                Novo veículo
+              </a>
+              <a class="btn btn-primary" href="veiculos.html">
+                <i data-lucide="external-link"></i>
+                Ver site
+              </a>
+            </div>
+          </section>
+
+          <section class="stats-grid" aria-label="Resumo do estoque">
+            <article class="stat-card">
+              <span data-total-vehicles>0</span>
+              <p>veículos cadastrados</p>
+            </article>
+            <article class="stat-card">
+              <span data-total-available>0</span>
+              <p>disponíveis</p>
+            </article>
+            <article class="stat-card">
+              <span data-total-blocked>0</span>
+              <p>reservados/vendidos</p>
+            </article>
+            <article class="stat-card">
+              <span data-total-photos>0</span>
+              <p>fotos no estoque</p>
+            </article>
+          </section>
+
+          <section class="stock-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Consulta</p>
+                <h2>Veículos salvos</h2>
+              </div>
+            </div>
+
+            <div class="stock-toolbar">
+              <label class="field compact-field">
+                <span>Buscar</span>
+                <input type="search" placeholder="Nome, marca ou ano" data-stock-search />
+              </label>
+              <label class="field compact-field">
+                <span>Status</span>
+                <select data-status-filter>
+                  <option value="all">Todos</option>
+                  <option value="Disponível">Disponível</option>
+                  <option value="Recém-chegado">Recém-chegado</option>
+                  <option value="Oferta">Oferta</option>
+                  <option value="Reservado">Reservado</option>
+                  <option value="Vendido">Vendido</option>
+                </select>
+              </label>
+              <label class="field compact-field">
+                <span>Ordenar</span>
+                <select data-sort-stock>
+                  <option value="featured">Destaques primeiro</option>
+                  <option value="price-desc">Maior preço</option>
+                  <option value="price-asc">Menor preço</option>
+                  <option value="year-desc">Mais novos</option>
+                  <option value="name-asc">Nome A-Z</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="stock-list" data-stock-list></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <template data-empty-template>
+      <div class="empty-panel">
+        <i data-lucide="car-front"></i>
+        <h3>Nenhum veículo cadastrado</h3>
+        <p>Comece pela página de cadastro para adicionar o primeiro veículo.</p>
+      </div>
+    </template>
+
+    <div class="toast" role="status" data-toast hidden></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="admin.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Publicação e importação do estoque da Global Veículos." />
+    <title>ADM Publicação | Global Veículos</title>
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body data-admin-page="publicacao">
+    <header class="admin-header">
+      <a class="brand" href="admin.html">
+        <span><img src="assets/global-veiculos-logo.jpg" alt="" /></span>
+        <strong>Global Veículos</strong>
+      </a>
+      <nav>
+        <a href="veiculos.html">Ver site</a>
+        <a href="admin.html">Estoque</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Alternar modo escuro" data-theme-toggle>
+        <i data-lucide="moon"></i>
+      </button>
+      <button class="theme-toggle" type="button" aria-label="Sair do ADM" data-logout>
+        <i data-lucide="log-out"></i>
+      </button>
+    </header>
+
+    <main class="admin-shell">
+      <div class="admin-layout">
+        <aside class="admin-sidebar" aria-label="Navegação do painel">
+          <div class="sidebar-card identity-card">
+            <img src="assets/global-veiculos-logo.jpg" alt="" />
+            <div>
+              <p class="eyebrow">ADM Global</p>
+              <strong>Publicação</strong>
+              <span>Importar, exportar e limpar estoque.</span>
+            </div>
+          </div>
+          <nav class="sidebar-nav" aria-label="Páginas do ADM">
+            <a href="admin.html"><i data-lucide="layout-dashboard"></i> Estoque</a>
+            <a href="admin-cadastro.html"><i data-lucide="car-front"></i> Cadastro</a>
+            <a href="admin-financeiro.html"><i data-lucide="calculator"></i> Financeiro</a>
+            <a href="admin-meta.html"><i data-lucide="megaphone"></i> Meta Ads</a>
+            <a href="admin-publicacao.html"><i data-lucide="send"></i> Publicação</a>
+          </nav>
+        </aside>
+
+        <div class="admin-workspace">
+          <section class="admin-hero">
+            <div>
+              <p class="eyebrow">Publicação</p>
+              <h1>Controle do estoque online</h1>
+              <p>Exporte backup, importe JSON ou zere o estoque quando precisar.</p>
+            </div>
+            <div class="admin-actions">
+              <button class="btn btn-primary" type="button" data-export-json>
+                <i data-lucide="download"></i>
+                Exportar JSON
+              </button>
+            </div>
+          </section>
+
+          <section class="admin-grid">
+            <div class="vehicle-form">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Ferramentas</p>
+                  <h2>Publicação</h2>
+                </div>
+              </div>
+
+              <div class="tool-card">
+                <div class="tool-title">
+                  <i data-lucide="database"></i>
+                  <strong>Estoque do servidor</strong>
+                </div>
+                <p>O estoque fica em `data/vehicles.json` e o site público lê esse arquivo pela API.</p>
+                <div class="tool-actions">
+                  <button class="btn btn-light" type="button" data-load-examples>
+                    <i data-lucide="copy"></i>
+                    Carregar exemplos
+                  </button>
+                  <label class="btn btn-light import-button">
+                    <i data-lucide="upload"></i>
+                    Importar JSON
+                    <input type="file" accept="application/json" data-import-json />
+                  </label>
+                  <button class="btn btn-danger" type="button" data-clear-stock>
+                    <i data-lucide="trash-2"></i>
+                    Zerar estoque
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <aside class="stock-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Publicado</p>
+                  <h2>Veículos no site</h2>
+                </div>
+              </div>
+              <div class="stock-list" data-stock-list></div>
+            </aside>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <template data-empty-template>
+      <div class="empty-panel">
+        <i data-lucide="car-front"></i>
+        <h3>Estoque zerado</h3>
+        <p>Nenhum veículo está publicado no momento.</p>
+      </div>
+    </template>
+
+    <div class="toast" role="status" data-toast hidden></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="admin.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

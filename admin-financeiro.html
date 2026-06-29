@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Financeiro dos veículos da Global Veículos." />
+    <title>ADM Financeiro | Global Veículos</title>
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body data-admin-page="financeiro">
+    <header class="admin-header">
+      <a class="brand" href="admin.html">
+        <span><img src="assets/global-veiculos-logo.jpg" alt="" /></span>
+        <strong>Global Veículos</strong>
+      </a>
+      <nav>
+        <a href="veiculos.html">Ver site</a>
+        <a href="admin.html">Estoque</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Alternar modo escuro" data-theme-toggle>
+        <i data-lucide="moon"></i>
+      </button>
+      <button class="theme-toggle" type="button" aria-label="Sair do ADM" data-logout>
+        <i data-lucide="log-out"></i>
+      </button>
+    </header>
+
+    <main class="admin-shell">
+      <div class="admin-layout">
+        <aside class="admin-sidebar" aria-label="Navegação do painel">
+          <div class="sidebar-card identity-card">
+            <img src="assets/global-veiculos-logo.jpg" alt="" />
+            <div>
+              <p class="eyebrow">ADM Global</p>
+              <strong>Financeiro</strong>
+              <span>Entrada, parcelas e observações.</span>
+            </div>
+          </div>
+          <nav class="sidebar-nav" aria-label="Páginas do ADM">
+            <a href="admin.html"><i data-lucide="layout-dashboard"></i> Estoque</a>
+            <a href="admin-cadastro.html"><i data-lucide="car-front"></i> Cadastro</a>
+            <a href="admin-financeiro.html"><i data-lucide="calculator"></i> Financeiro</a>
+            <a href="admin-meta.html"><i data-lucide="megaphone"></i> Meta Ads</a>
+            <a href="admin-publicacao.html"><i data-lucide="send"></i> Publicação</a>
+          </nav>
+        </aside>
+
+        <div class="admin-workspace">
+          <section class="admin-hero">
+            <div>
+              <p class="eyebrow">Financeiro</p>
+              <h1>Condições de venda</h1>
+              <p>Registre entrada sugerida, parcela estimada, banco parceiro e observações.</p>
+            </div>
+          </section>
+
+          <section class="admin-grid">
+            <form class="vehicle-form" data-finance-form>
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Veículo</p>
+                  <h2>Dados financeiros</h2>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <label class="field field-wide">
+                  <span>Selecionar veículo</span>
+                  <select name="id" data-vehicle-select required>
+                    <option value="">Escolha um veículo</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Entrada sugerida</span>
+                  <div class="input-affix">
+                    <span>R$</span>
+                    <input type="number" name="downPayment" placeholder="15000" min="0" />
+                  </div>
+                </label>
+                <label class="field">
+                  <span>Qtd. parcelas</span>
+                  <input type="number" name="installments" placeholder="48" min="0" max="120" />
+                </label>
+                <label class="field">
+                  <span>Valor da parcela</span>
+                  <div class="input-affix">
+                    <span>R$</span>
+                    <input type="number" name="monthlyPayment" placeholder="1290" min="0" />
+                  </div>
+                </label>
+                <label class="field">
+                  <span>Banco/parceiro</span>
+                  <input type="text" name="financeBank" placeholder="Ex: banco parceiro" />
+                </label>
+                <label class="field field-wide">
+                  <span>Observações financeiras</span>
+                  <textarea name="financeNotes" rows="4" placeholder="Ex: aprovação sujeita à análise, valor estimado para perfil aprovado."></textarea>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">
+                  <i data-lucide="save"></i>
+                  Salvar financeiro
+                </button>
+                <a class="btn btn-light" href="admin-meta.html">
+                  <i data-lucide="megaphone"></i>
+                  Ir para Meta Ads
+                </a>
+              </div>
+            </form>
+
+            <aside class="stock-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Resumo</p>
+                  <h2>Estoque</h2>
+                </div>
+              </div>
+              <div class="stock-list" data-stock-list></div>
+            </aside>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <template data-empty-template>
+      <div class="empty-panel">
+        <i data-lucide="car-front"></i>
+        <h3>Nenhum veículo cadastrado</h3>
+        <p>Cadastre um veículo antes de preencher o financeiro.</p>
+      </div>
+    </template>
+
+    <div class="toast" role="status" data-toast hidden></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="admin.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

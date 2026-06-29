@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Global Veículos em Alfenas-MG. Mais de 20 anos no mercado, compra, venda, troca, financiamento e veículos de procedência."
+    />
+    <meta property="og:title" content="Global Veículos | Seminovos em Alfenas" />
+    <meta
+      property="og:description"
+      content="Revenda de carros e motos com procedência, troca e financiamento em Alfenas-MG."
+    />
+    <meta property="og:image" content="assets/global-veiculos-logo.jpg" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/global-veiculos-logo.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/pwa-icon-192.png" />
+    <meta name="theme-color" content="#0b1b34" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Global Veículos" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("globalTheme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <title>Global Veículos | Seminovos em Alfenas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="home-page">
+    <header class="site-header" data-header>
+      <a class="logo" href="index.html" aria-label="Global Veículos - Início">
+        <span class="logo-mark logo-image">
+          <img src="assets/global-veiculos-logo.jpg" alt="" />
+        </span>
+        <span>
+          <strong>Global Veículos</strong>
+          <small>Alfenas - MG</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
+        <i data-lucide="menu"></i>
+      </button>
+
+      <nav class="main-nav" data-nav>
+        <a href="index.html">Início</a>
+        <a href="veiculos.html">Veículos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="troca.html">Troca</a>
+        <a href="financiamento.html">Financiamento</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-label="Alternar modo escuro" data-theme-toggle>
+        <i data-lucide="moon"></i>
+      </button>
+
+      <a class="header-cta" href="#" data-whatsapp>
+        <i data-lucide="message-circle"></i>
+        <span>Falar no WhatsApp</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+          <p class="eyebrow">+20 anos no mercado automotivo</p>
+          <h1>Encontre o seminovo ideal para você</h1>
+          <p class="hero-subtitle">
+            Compra, venda, troca e financiamento de carros e motos com procedência para
+            Alfenas e todo o Sul de Minas.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="veiculos.html">
+              <i data-lucide="car-front"></i>
+              <span>Ver veículos</span>
+            </a>
+            <a class="btn btn-secondary" href="#" data-whatsapp>
+              <i data-lucide="headphones"></i>
+              <span>Falar com consultor</span>
+            </a>
+          </div>
+          <div class="hero-proof" aria-label="Diferenciais da Global Veículos">
+            <span><strong>20+</strong> anos no mercado</span>
+            <span><strong>Compra</strong> venda e troca</span>
+            <span><strong>Sul de Minas</strong> atendimento regional</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-bar" aria-label="Serviços da Global Veículos">
+        <div class="section-inner trust-grid">
+          <article>
+            <i data-lucide="badge-check"></i>
+            <span>Revenda de procedência</span>
+          </article>
+          <article>
+            <i data-lucide="repeat-2"></i>
+            <span>Compra, venda e troca</span>
+          </article>
+          <article>
+            <i data-lucide="wallet-cards"></i>
+            <span>Financia com análise</span>
+          </article>
+          <article>
+            <i data-lucide="map-pin"></i>
+            <span>Alfenas - MG</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="benefits section-band" aria-label="Benefícios">
+        <div class="section-inner benefits-grid">
+          <article class="benefit-card reveal">
+            <i data-lucide="badge-check"></i>
+            <h3>Veículos revisados</h3>
+            <p>Seleção cuidadosa para você comprar com mais tranquilidade.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <i data-lucide="shield-check"></i>
+            <h3>Procedência garantida</h3>
+            <p>Histórico conferido e negociação transparente do começo ao fim.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <i data-lucide="repeat-2"></i>
+            <h3>Aceitamos troca</h3>
+            <p>Avaliamos seu carro antigo para facilitar a entrada no próximo veículo.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <i data-lucide="wallet-cards"></i>
+            <h3>Financiamento facilitado</h3>
+            <p>Simulação rápida com condições sujeitas à aprovação de crédito.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <i data-lucide="handshake"></i>
+            <h3>Atendimento personalizado</h3>
+            <p>Pedro e equipe ajudam você a escolher sem pressão e sem enrolação.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Acesse por página</p>
+            <h2>Escolha o que quer fazer agora</h2>
+            <p>Cada área do site tem sua própria página para ficar mais simples de navegar.</p>
+          </div>
+          <div class="page-card-grid">
+            <a class="page-card reveal" href="veiculos.html">
+              <i data-lucide="car-front"></i>
+              <strong>Ver veículos</strong>
+              <span>Estoque com filtros, detalhes e WhatsApp.</span>
+            </a>
+            <a class="page-card reveal" href="sobre.html">
+              <i data-lucide="building-2"></i>
+              <strong>Sobre a loja</strong>
+              <span>História, atendimento e diferenciais.</span>
+            </a>
+            <a class="page-card reveal" href="troca.html">
+              <i data-lucide="repeat-2"></i>
+              <strong>Avaliar troca</strong>
+              <span>Use seu usado ou carro antigo na negociação.</span>
+            </a>
+            <a class="page-card reveal" href="financiamento.html">
+              <i data-lucide="calculator"></i>
+              <strong>Financiamento</strong>
+              <span>Simulação rápida pelo WhatsApp.</span>
+            </a>
+            <a class="page-card reveal" href="contato.html">
+              <i data-lucide="message-circle"></i>
+              <strong>Contato</strong>
+              <span>Endereço, horário e formulário para WhatsApp.</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-inner footer-layout">
+        <a class="logo footer-logo" href="index.html">
+          <span class="logo-mark logo-image">
+            <img src="assets/global-veiculos-logo.jpg" alt="" />
+          </span>
+          <span>
+            <strong>Global Veículos</strong>
+            <small>Seminovos em Alfenas</small>
+          </span>
+        </a>
+        <nav class="footer-links" aria-label="Links rápidos">
+          <a href="index.html">Início</a>
+          <a href="veiculos.html">Veículos</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="troca.html">Troca</a>
+          <a href="financiamento.html">Financiamento</a>
+          <a href="contato.html">Contato</a>
+          <a href="privacidade.html">Privacidade</a>
+        </nav>
+        <div class="footer-social">
+          <a href="#" data-whatsapp>WhatsApp</a>
+          <a href="https://www.instagram.com/_globalveiculosalfenas/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="admin.html">Área ADM</a>
+        </div>
+      </div>
+      <p class="copyright">© <span data-year></span> Global Veículos. Todos os direitos reservados.</p>
+    </footer>
+
+    <a class="floating-whatsapp" href="#" aria-label="Falar no WhatsApp" data-whatsapp>
+      <i data-lucide="message-circle"></i>
+    </a>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+    <script src="pwa.js"></script>
+  </body>
+</html>

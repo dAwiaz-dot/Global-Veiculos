@@ -1,0 +1,9 @@
+{
+  "name": "global-veiculos-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site e painel administrativo da Global Veiculos.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
