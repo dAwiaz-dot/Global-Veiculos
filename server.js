@@ -247,7 +247,7 @@ async function handleApi(req, res, pathname) {
   json(res, 404, { error: "Rota nao encontrada." });
 }
 
-const server = http.createServer(async (req, res) => {
+async function requestHandler(req, res) {
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
 
@@ -261,12 +261,18 @@ const server = http.createServer(async (req, res) => {
     console.error("Erro na requisicao.", error);
     json(res, error.statusCode || 500, { error: error.message || "Erro interno." });
   }
-});
+}
 
-server.listen(PORT, () => {
-  console.log(`Global Veiculos rodando em http://localhost:${PORT}`);
-  console.log(`ADM: usuario "${ADMIN_USER}"`);
-  if (ADMIN_PASSWORD === "global123") {
-    console.log('Senha padrao ativa: "global123". Troque ADMIN_PASSWORD antes de publicar.');
-  }
-});
+const server = http.createServer(requestHandler);
+
+if (!process.env.VERCEL) {
+  server.listen(PORT, () => {
+    console.log(`Global Veiculos rodando em http://localhost:${PORT}`);
+    console.log(`ADM: usuario "${ADMIN_USER}"`);
+    if (ADMIN_PASSWORD === "global123") {
+      console.log('Senha padrao ativa: "global123". Troque ADMIN_PASSWORD antes de publicar.');
+    }
+  });
+}
+
+module.exports = requestHandler;
